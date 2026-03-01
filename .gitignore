@@ -1,3 +1,30 @@
-.zig-cache/
-zig-out/
-*.o
+# ==== Zig ====
+zig/.zig-cache/
+zig/zig-out/
+zig/*.o
+
+# ==== Flutter / Dart ====
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.lock
+*.log
+
+# Android / Gradle
+**/android/app/build/
+**/android/build/
+**/gradle/
+**/.gradle/
+*.iml
+
+# IDE / Editor (Non-VSCode)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Misc
+.DS_Store
