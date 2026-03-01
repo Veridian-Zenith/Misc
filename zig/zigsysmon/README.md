@@ -22,6 +22,7 @@ A minimal, production-ready system monitor written in pure Zig with zero externa
 ## Building
 
 ### Using Makefile (recommended)
+
 ```bash
 make              # Build in Debug mode
 make release      # Production build (ReleaseFast)
@@ -33,6 +34,7 @@ make help         # Show all targets
 ```
 
 ### Using Zig directly
+
 ```bash
 zig build                             # Build Debug
 zig build -Doptimize=ReleaseFast      # Production build
@@ -53,16 +55,19 @@ This project has been fully updated for **Zig 0.15.2**. Key API adjustments made
 All code has been tested and compiles without errors or warnings on Zig 0.15.2.
 
 ### Using Makefile
+
 ```bash
 make run
 ```
 
 ### Using Zig directly
+
 ```bash
 zig build run
 ```
 
 ### Using the binary directly
+
 ```bash
 ./zig-out/bin/zigsysmon
 ```
@@ -81,7 +86,7 @@ zigsysmon --help
 
 ### Command-Line Options
 
-```
+```bash
 --help, -h                Show help message
 --version, -v             Show version information
 --daemon, -d MS           Run in daemon mode (update every MS milliseconds)
@@ -100,7 +105,7 @@ zigsysmon
 ```
 
 Output:
-```
+```bash
 CPU (total): user=5585164 system=1092311 idle=33342974
 CPU 0: user=620445 system=110228 idle=4065423
 ...
@@ -118,6 +123,7 @@ zigsysmon --format json
 ```
 
 Output:
+
 ```json
 {
   "timestamp": 1772404827,
@@ -142,6 +148,7 @@ zigsysmon --format csv
 ```
 
 Output:
+
 ```csv
 timestamp,metric,value
 1772404827,cpu_total_user,5585164
@@ -200,7 +207,7 @@ The codebase is organized into several focused modules, each responsible for a s
 
 ### Module Interactions Diagram
 
-```
+```bash
 $\text{main.zig (CLI entry)}$
      ↓
      ├─→ Help/Version mode
@@ -232,8 +239,10 @@ $\text{main.zig (CLI entry)}$
 5. **POSIX-only**: Designed for Linux; can be adapted for other Unix-like systems
 
 ## Memory Metrics Explained
+
 The monitor calculates available memory as:
-```
+
+```bash
 available = free + buffers + cached
 used = total - free - buffers - cached
 ```
@@ -245,7 +254,7 @@ can be reclaimed by the kernel when needed.
 
 All CPU times are in jiffies (scheduler ticks). To calculate CPU usage percentage:
 
-```
+```bash
 busy_time = user + nice + system + irq + softirq
 total_time = user + nice + system + idle + iowait + irq + softirq
 usage_percent = (busy_time / total_time) * 100
@@ -274,6 +283,7 @@ Track delta between two readings over a time period to get instantaneous usage.
 ## Testing
 
 Run the test suite:
+
 ```bash
 zig build test
 # or
@@ -281,6 +291,7 @@ zig build test
 ```
 
 Tests validate:
+
 - CPU time parsing from real `/proc/stat`
 - Memory stat parsing from real `/proc/meminfo`
 - Network stat parsing from real `/proc/net/dev`
@@ -307,6 +318,7 @@ This project is part of the Misc repository. See LICENSE file.
 ## Contributing
 
 When extending zigsysmon:
+
 1. Add test cases for new functionality
 2. Document all public functions with doc comments
 3. Avoid adding external dependencies
