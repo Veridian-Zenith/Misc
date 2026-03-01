@@ -60,12 +60,6 @@ All code has been tested and compiles without errors or warnings on Zig 0.15.2.
 make run
 ```
 
-### Using Zig directly
-
-```bash
-zig build run
-```
-
 ### Using the binary directly
 
 ```bash
@@ -105,6 +99,7 @@ zigsysmon
 ```
 
 Output:
+
 ```bash
 CPU (total): user=5585164 system=1092311 idle=33342974
 CPU 0: user=620445 system=110228 idle=4065423
